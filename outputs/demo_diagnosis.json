@@ -1,0 +1,33 @@
+{
+  "case_id": "CASE-001",
+  "symptom": "PC in VLAN 30 gets IP but cannot reach server in same VLAN.",
+  "topology_note": "Access switch SW1 connects PC3 on Fa0/12 and server on Fa0/20.",
+  "ai_diagnosis": {
+    "root_cause": "PC access port is in the wrong VLAN.",
+    "confidence": "high",
+    "osi_layer": "2",
+    "concept_tag": "VLAN",
+    "evidence": [
+      "show vlan brief: VLAN 30 missing Fa0/12; Fa0/12 listed in VLAN 1",
+      "show interfaces fa0/12 switchport: Access Mode VLAN: 1"
+    ],
+    "next_command": [
+      "show vlan brief",
+      "show interfaces trunk",
+      "show interfaces switchport"
+    ],
+    "fix_steps": [
+      "Set Fa0/12 to access VLAN 30 and verify with show vlan brief.",
+      "Retest the original symptom.",
+      "Record human review decision before closing the case."
+    ],
+    "needs_human_review": true
+  },
+  "human_review": {
+    "decision": "Accepted",
+    "reviewer_note": "Diagnosis is supported by the show-command evidence and the fix is specific."
+  },
+  "verification": {
+    "post_fix_check": "Original connectivity test passes and show output confirms corrected configuration."
+  }
+}

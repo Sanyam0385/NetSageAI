@@ -1,0 +1,6 @@
+case_id,ai_status,ai_summary,human_decision,human_correction,why_it_matters
+CASE-003,Edited,"AI blamed inter-VLAN routing because remote networks failed.","Edited","Evidence showed the PC gateway was 192.168.10.254 while the router gateway was 192.168.10.1.","A routing fix would not repair a bad client gateway."
+CASE-007,Rejected,"AI suggested the router subinterface was down.","Rejected","The DHCP binding showed clients were receiving 192.168.6.0/24 addresses for a 192.168.60.0/24 VLAN.","Interface state was not the fault; DHCP pool network was wrong."
+CASE-014,Edited,"AI said ACL 101 blocked all traffic.","Edited","ACL 101 permitted one subnet but omitted required permits for other subnets, causing implicit deny.","The fix must add specific permits, not simply delete security policy."
+CASE-018,Rejected,"AI recommended opening firewall ports.","Rejected","Static NAT mapped 203.0.113.50 to 192.168.10.5 instead of the web server 192.168.10.50.","The service was reachable internally; the translation target was wrong."
+CASE-021,Edited,"AI blamed DHCP scope exhaustion.","Edited","Wireless clients got addresses from guest VLAN 99, proving the WLAN-to-VLAN mapping was wrong.","Adding DHCP addresses would expand the wrong network."

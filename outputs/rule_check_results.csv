@@ -1,0 +1,14 @@
+case_id,check,severity,message,evidence
+CASE-031,duplicate_ip,high,Duplicate IP 192.168.10.1 appears on multiple interfaces.,Gi0/0 and Gi0/0
+CASE-024,wrong_mask,medium,Client mask does not match the intended subnet size.,ipconfig: IPv4 172.16.5.10 Mask 255.255.255.0 Gateway 172.16.4.1
+CASE-003,gateway_mismatch,medium,Default gateway differs from the documented gateway.,ipconfig: IPv4 192.168.10.25 Mask 255.255.255.0 Gateway 192.168.10.254 | show ip int brief: Gi0/0.10 192.168.10.1 up/up
+CASE-004,gateway_mismatch,high,Default gateway is outside the client subnet.,IPv4 10.10.5.44 Mask 255.255.255.0 Gateway 10.10.6.1
+CASE-024,gateway_mismatch,high,Default gateway is outside the client subnet.,IPv4 172.16.5.10 Mask 255.255.255.0 Gateway 172.16.4.1
+CASE-023,interface_down,high,Interface or radio is down/disabled.,show ip interface brief: Serial0/0/0 administratively down | show controllers serial0/0/0: DCE cable
+CASE-030,interface_down,high,Interface or radio is down/disabled.,show ap summary: AP1 registered; Radio 2.4GHz Disabled Radio 5GHz Disabled
+CASE-001,missing_or_wrong_vlan,medium,"VLAN is missing, inactive, not allowed, or not assigned correctly.",show vlan brief: VLAN 30 missing Fa0/12; Fa0/12 listed in VLAN 1 | show interfaces fa0/12 switchport: Access Mode VLAN: 1
+CASE-002,missing_or_wrong_vlan,medium,"VLAN is missing, inactive, not allowed, or not assigned correctly.","show interfaces trunk: Gi0/1 allowed vlans 1,10,30 | show ip interface brief: Gi0/1.20 up/up 192.168.20.1"
+CASE-022,missing_or_wrong_vlan,medium,"VLAN is missing, inactive, not allowed, or not assigned correctly.",show vlan brief: VLAN 70 not listed | show interfaces fa0/5 switchport: Access Mode VLAN: 70 inactive
+CASE-010,missing_or_wrong_route,high,"Route is missing, default route is absent, or next hop is wrong.",show ip route on R2: no route to 10.0.10.0/24 | ping 10.0.10.10 source 192.168.20.1 fails
+CASE-011,missing_or_wrong_route,high,"Route is missing, default route is absent, or next hop is wrong.",show ip route: S 10.0.10.0/24 [1/0] via 172.16.21.1 | show cdp neighbors: R1 on 172.16.12.1 link
+CASE-028,missing_or_wrong_route,high,"Route is missing, default route is absent, or next hop is wrong.",show ip nat translations: icmp 203.0.113.2:4 192.168.10.25:4 8.8.8.8:4 8.8.8.8:4 | show ip route: Gateway of last resort is not set
