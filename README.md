@@ -14,7 +14,9 @@ NetSage reads symptoms, topology notes, and show-command evidence, then produces
 - `src/generate_ai_outputs.py`: creates a saved diagnosis/comparison row for every case.
 - `dashboard/index.html`: local dashboard summarizing issue types, severity, AI vs human agreement, and a reviewed demo case.
 - `outputs/responsible_ai_log.csv`: examples where human reviewers corrected AI outputs.
+## How it works
 
+NetSage AI analyzes network symptoms, topology details, and show-command evidence using rule-based checks and AI-generated diagnosis. The diagnosis is then reviewed by a human and marked as `Accepted`, `Edited`, or `Rejected` before any fix is applied.
 ## Quick start
 
 ```powershell
